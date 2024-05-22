@@ -151,7 +151,7 @@ describe("Issue create", () => {
       });
   });
 
-  it.only("Test Case 2: Random Data Plugin Issue Creation", () => {
+  it("Test Case 2: Random Data Plugin Issue Creation", () => {
     const randomTitle = faker.random.word();
     const randomDescription = faker.lorem.words(5);
 

@@ -165,9 +165,9 @@ describe("Issue create", () => {
       cy.get('input[name="title"]').type(randomTitle);
       cy.get('input[name="title"]').should("have.value", randomTitle);
 
-         // Verify that the issue type "Task" is already selected
-  cy.get('[data-testid="select:type"]').should('have.text', 'Task');
-      
+      // Verify that the issue type "Task" is already selected
+      cy.get('[data-testid="select:type"]').should("have.text", "Task");
+
       // Select priority as "Low"
       cy.get('[data-testid="select:priority"]').click();
       cy.get('[data-testid="select-option:Low"]').click();
@@ -193,4 +193,3 @@ describe("Issue create", () => {
     cy.contains("Issue has been successfully created.").should("not.exist");
   });
 });
-

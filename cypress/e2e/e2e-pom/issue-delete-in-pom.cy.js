@@ -1,25 +1,33 @@
-/**
- * This is an example file and approach for POM in Cypress
- */
 import IssueModal from "../../pages/IssueModal";
 
-describe('Issue delete', () => {
+describe("Issue Deletion", () => {
   beforeEach(() => {
-    cy.visit('/');
-    cy.url().should('eq', `${Cypress.env('baseUrl')}project/board`).then((url) => {
-    //open issue detail modal with title from line 16  
-    cy.contains(issueTitle).click();
-    });
+    cy.visit("/board");
+    cy.get('[data-testid="board-list:backlog"]').should("be.visible");
+    cy.get('[data-testid="list-issue"]').first().click();
+    IssueModal.getIssueDetailModal().should("be.visible");
   });
 
-  //issue title, that we are testing with, saved into variable
-  const issueTitle = 'This is an issue of type: Task.';
+  it("Assignment 4: Test Case 1: Issue Deletion_POM", () => {
+    // Use the Page Object Model method to delete an issue
+    IssueModal.clickDeleteButton();
+    IssueModal.confirmDeletion();
 
-  it('Should delete issue successfully', () => {
-    //add steps to delete issue
+    // Verify the issue is deleted
+    cy.get('[data-testid="list-issue"]')
+      .first()
+      .should("not.contain", "This is an issue of type: Task.");
   });
 
-  it('Should cancel deletion process successfully', () => {
-    //add steps to start deletion proces but cancel it
+  it("Assignment 4: Test Case 2: Cancel Issue Deletion_POM", () => {
+    // Use the Page Object Model method to cancel issue deletion
+    IssueModal.clickDeleteButton();
+    IssueModal.cancelDeletion();
+    IssueModal.closeDetailModal();
+
+    // Verify the issue is still present
+    cy.get('[data-testid="list-issue"]')
+      .first()
+      .should("contain", "This is an issue of type: Task.");
   });
 });

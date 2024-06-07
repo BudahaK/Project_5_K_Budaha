@@ -26,7 +26,7 @@ class IssueDetailsPage {
             cy.get('textarea[placeholder="Add a comment..."]').should('contain', oldComment).clear().type(newComment);
             cy.contains('button', 'Save').click();
         });
-        cy.wait(6000); // Increased explicit wait for UI update
+        cy.wait(6000); // Increased wait for UI update
         this.getIssueDetailsModal().within(() => {
             cy.get('[data-testid="issue-comment"]').should('contain', 'Edit').and('contain', newComment);
         });
@@ -40,11 +40,11 @@ class IssueDetailsPage {
                 .contains('Delete')
                 .click();
         });
-        cy.wait(6000); // Increased explicit wait for modal appearance
+        cy.wait(6000); // Increased wait for modal appearance
         cy.get('[data-testid="modal:confirm"]').within(() => {
             cy.contains('button', 'Delete comment').click();
         });
-        cy.wait(6000); // Increased explicit wait for modal disappearance
+        cy.wait(6000); // Increased wait for modal disappearance
         cy.get('body').then(($body) => {
             if ($body.find('[data-testid="modal:issue-details"]').length) {
                 cy.log('The issue details modal still exists');

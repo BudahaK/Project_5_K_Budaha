@@ -1,4 +1,4 @@
-import IssueDetailsPage from "../../pages/issueComment";
+import IssueDetailsPage from "../pages/issueComment";
 
 describe("Issue comments creating, editing and deleting", () => {
   const initialComment = "TEST_COMMENT";

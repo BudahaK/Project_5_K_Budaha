@@ -57,7 +57,4 @@ class IssueDetailsPage {
 }
 
 export default IssueDetailsPage;
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master

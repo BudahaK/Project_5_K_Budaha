@@ -26,7 +26,7 @@ class IssueDetailsPage {
             cy.get('textarea[placeholder="Add a comment..."]').should('contain', oldComment).clear().type(newComment);
             cy.contains('button', 'Save').click();
         });
-        cy.wait(6000); // Increased wait for UI update
+        cy.wait(6000); // Increased wait time for UI update
         this.getIssueDetailsModal().within(() => {
             cy.get('[data-testid="issue-comment"]').should('contain', 'Edit').and('contain', newComment);
         });
